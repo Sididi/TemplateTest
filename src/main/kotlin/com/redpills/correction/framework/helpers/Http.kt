@@ -32,7 +32,7 @@ object Http {
             template,
             String.format(url, *args),
             HttpMethod.GET
-        )
+        ).withContentType(MediaType.APPLICATION_JSON)
     }
 
     fun post(url: String, bodyObject: Any): RestHttpRequest {
@@ -40,7 +40,7 @@ object Http {
             template,
             url,
             HttpMethod.POST
-        ).withBody(bodyObject)
+        ).withBody(bodyObject).withContentType(MediaType.APPLICATION_JSON)
     }
 
     fun put(url: String, bodyObject: Any): RestHttpRequest {
