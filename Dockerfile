@@ -1,4 +1,6 @@
 FROM openjdk:8-jdk-alpine as builder
+%s
+
 WORKDIR /tmp/builder
 COPY ./gradle ./gradle
 COPY ./gradlew ./
