@@ -1,2 +1,2 @@
-RUN apt-get install -y gcc
-RUN apt-get install -y g++
+RUN apk add --update gcc
+RUN apk add --update g++
