@@ -8,7 +8,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 
 open class Worker {
-    private val serviceUrl = "http://172.17.0.1:8080/worker"
+    private val serviceUrl = "http://localhost:8080/worker"
 
     protected val containerId: ContainerIdentityDTO
     protected val studentRepository: GitRepository
@@ -28,6 +28,7 @@ open class Worker {
         while (reader.readLine().also { line = it } != null)
             containerId += line
 
+        println("CONTAINER ID IS <<<$containerId>>>")
         this.containerId = ContainerIdentityDTO(containerId)
         this.studentRepository = Http.post("$serviceUrl/init", containerId).toResponse(GitRepository::class.java)
             ?: error("internal error while trying to retrieve student repository")
