@@ -10,19 +10,11 @@ class Main {
                 withCompileScript("echo \"compilation skipped\"")
 
                 addOutputTask {
-                    withLaunchScript("ls ")
+                    withLaunchScript("./sample.sh")
                     withHint("sample test")
                     expectStdoutResult("hello world")
                     giveMarkOnSuccess(10)
                     setTimeoutMinutes(2)
-                }
-
-                addOutputTask {
-                    withLaunchScript("./sample.sh")
-                    withHint("sample test should fail")
-                    expectStdoutResult("unexpected result")
-                    giveMarkOnSuccess(10)
-                    setTimeoutMinutes(10)
                 }
             }
         }
