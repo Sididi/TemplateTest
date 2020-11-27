@@ -35,7 +35,7 @@ class OutputCorrectionTask(
             else -> 0
         }
 
-        return listOf(TaskResult(mark, hint))
+        return listOf(TaskResult(mark, this.mark, hint))
     }
 
     private fun readOutputAsync(stream: InputStream) {

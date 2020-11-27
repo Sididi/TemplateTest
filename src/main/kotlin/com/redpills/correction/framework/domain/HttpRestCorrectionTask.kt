@@ -29,7 +29,7 @@ class HttpRestCorrectionTask(
             else -> 0
         }
 
-        return TaskResult(mark, hint)
+        return TaskResult(mark, this.mark, hint)
     }
 }
 
