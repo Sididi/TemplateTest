@@ -4,7 +4,7 @@ COPY ./gradle ./gradle
 COPY ./gradlew ./
 RUN ./gradlew
 COPY ./ ./
-RUN ./gradlew build
+RUN ./gradlew build > logs
 
 FROM openjdk:8-jre-alpine as launcher
 WORKDIR /tmp/launcher
