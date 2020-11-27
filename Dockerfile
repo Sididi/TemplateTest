@@ -2,9 +2,9 @@ FROM openjdk:8-jdk-alpine as builder
 WORKDIR /srv/builder
 COPY ./gradle ./gradle
 COPY ./gradlew ./
-RUN ./gradlew
+RUN gradlew.bat
 COPY ./ ./
-RUN ./gradlew build
+RUN gradlew.bat build
 
 FROM openjdk:8-jre-alpine as launcher
 ENV DOCKER 1
