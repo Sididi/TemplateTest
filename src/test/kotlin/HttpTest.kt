@@ -13,7 +13,6 @@ import org.springframework.http.HttpMethod
 import java.util.concurrent.TimeUnit
 
 class HttpTest {
-    @Test
     fun httpTest() {
         val server = server(8080)
         val expectedMark = 20

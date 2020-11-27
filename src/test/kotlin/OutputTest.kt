@@ -3,7 +3,6 @@ import org.junit.Test
 
 class OutputTest {
 
-    @Test
     fun outputTest() {
         val expectedMark = 20
 

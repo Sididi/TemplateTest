@@ -1,5 +1,8 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     kotlin("jvm") version "1.3.72"
+    id("com.github.johnrengelman.shadow") version("6.1.0")
 }
 
 group = "org.example"
@@ -7,6 +10,22 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+tasks {
+    named<ShadowJar>("shadowJar") {
+        archiveBaseName.set("fatjar")
+        mergeServiceFiles()
+        manifest {
+            attributes(mapOf("Main-Class" to "com.redpills.correction.framework.Main"))
+        }
+    }
+}
+
+tasks {
+    build {
+        dependsOn(shadowJar)
+    }
 }
 
 dependencies {
@@ -20,12 +39,9 @@ dependencies {
     testImplementation("junit:junit:4.13")
 }
 
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        suppressWarnings = true
     }
 }
