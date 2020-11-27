@@ -28,9 +28,8 @@ open class Worker {
         while (reader.readLine().also { line = it } != null)
             containerId += line
 
-        println("CONTAINER ID IS $containerId")
         this.containerId = ContainerIdentityDTO(containerId)
-        this.studentRepository = Http.post("$serviceUrl/init", containerId).toResponse(GitRepository::class.java)
+        this.studentRepository = Http.post("$serviceUrl/init", this.containerId).toResponse(GitRepository::class.java)
             ?: error("internal error while trying to retrieve student repository")
     }
 
