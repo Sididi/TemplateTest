@@ -10,7 +10,7 @@ class Main {
                 withCompileScript("echo \"compilation skipped\"")
 
                 addOutputTask {
-                    withLaunchScript("./sample.sh")
+                    withLaunchScript("chmod 777 sample.sh && ./sample.sh")
                     withHint("sample test")
                     expectStdoutResult("hello world")
                     giveMarkOnSuccess(10)

@@ -4,6 +4,7 @@ import java.io.BufferedReader
 import java.io.File
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
 
@@ -38,15 +39,13 @@ class OutputCorrectionTask(
     }
 
     private fun readOutputAsync(stream: InputStream) {
-        Thread(Runnable {
-            val reader = BufferedReader(InputStreamReader(stream))
-            var line: String?
+        val reader = BufferedReader(InputStreamReader(stream))
+        var line: String?
 
-            while (reader.readLine().also { line = it } != null)
-                processOutput += when (processOutput.isNotEmpty()) {
-                    true -> "\n$line"
-                    else -> line
-                }
-        }).start()
+        while (reader.readLine().also { line = it } != null)
+            processOutput += when (processOutput.isNotEmpty()) {
+                true -> "\n$line"
+                else -> line
+            }
     }
 }

@@ -1,12 +1,23 @@
 package com.redpills.correction.framework.helpers
 
-import org.springframework.http.*
+import com.fasterxml.jackson.databind.SerializationFeature
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpMethod
+import org.springframework.http.MediaType
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.client.RestTemplate
 import java.util.*
 
 
 object Http {
     private val template = RestTemplate()
+
+    init {
+        val jsonHttpMessageConverter = MappingJackson2HttpMessageConverter()
+        jsonHttpMessageConverter.objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+        template.messageConverters.add(jsonHttpMessageConverter)
+    }
 
     fun request(method: HttpMethod, url: String, vararg args: Any): RestHttpRequest {
         return RestHttpRequest(

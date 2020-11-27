@@ -40,5 +40,5 @@ open class Worker {
         Http.post("$serviceUrl/tests/finished", containerId).toResponse()
 
     protected fun publishResult(results: WorkerTestResultDTO) =
-        Http.post("$serviceUrl/tests/start", results).toResponse()
+        Http.post("$serviceUrl/tests/result", results).toResponse()
 }

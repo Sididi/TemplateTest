@@ -2,12 +2,11 @@ import com.redpills.correction.framework.domain.OutputCorrectionTask
 import org.junit.Test
 
 class OutputTest {
-
     fun outputTest() {
         val expectedMark = 20
 
         val task = OutputCorrectionTask().apply {
-            script = "echo \"hello world\""
+            script = "echo hello world"
             expectedResult = "hello world"
             hint = "echo test"
             mark = expectedMark
@@ -16,6 +15,6 @@ class OutputTest {
 
         val results = task.execute()
 
-        results.forEach { assert(it.mark != expectedMark) }
+        results.forEach { assert(it.mark == expectedMark) }
     }
 }

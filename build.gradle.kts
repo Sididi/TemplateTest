@@ -30,10 +30,11 @@ tasks {
 
 dependencies {
     implementation("org.eclipse.jgit:org.eclipse.jgit:5.7.0.202003110725-r")
-    implementation("org.springframework:spring-web:3.0.2.RELEASE")
+    implementation("org.springframework:spring-web:5.2.11.RELEASE")
     implementation("junit:junit:4.13")
     implementation("io.ktor:ktor-server-core:1.4.0")
     implementation("io.ktor:ktor-server-netty:1.4.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.3")
     implementation(kotlin("stdlib-jdk8"))
 
     testImplementation("junit:junit:4.13")
