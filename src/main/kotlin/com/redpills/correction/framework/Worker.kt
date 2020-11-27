@@ -8,7 +8,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 
 open class Worker {
-    private val serviceUrl = "http://correction/worker"
+    private val serviceUrl = "http://localhost/worker"
 
     protected val containerId: ContainerIdentityDTO
     protected val studentRepository: GitRepository
